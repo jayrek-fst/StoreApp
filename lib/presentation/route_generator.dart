@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:store_app/model/product_model.dart';
-import 'package:store_app/ui/screen/dashboard_screen.dart';
-import 'package:store_app/ui/screen/product_detail_screen.dart';
-import 'package:store_app/util/constant_util.dart';
+import 'package:store_app/presentation/ui/screen/dashboard_screen.dart';
+import 'package:store_app/presentation/ui/screen/product_detail_screen.dart';
+
+import '../domain/model/product_model.dart';
+import 'util/constant_util.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
