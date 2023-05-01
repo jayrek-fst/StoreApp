@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../model/product_model.dart';
+import '../../domain/model/product_model.dart';
 import '../../util/constant_util.dart';
 import 'star_rating_widget.dart';
 

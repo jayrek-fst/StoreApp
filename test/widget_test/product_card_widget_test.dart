@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:store_app/model/product_model.dart';
-import 'package:store_app/model/rating_model.dart';
+import 'package:store_app/domain/model/product_model.dart';
+import 'package:store_app/domain/model/rating_model.dart';
 import 'package:store_app/ui/widget/product_card_widget.dart';
 import 'package:store_app/util/constant_util.dart';
 

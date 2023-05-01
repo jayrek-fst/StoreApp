@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:store_app/data/datasource/remote/product_datasource_impl.dart';
+import 'package:store_app/data/repository/product_repository_impl.dart';
+import 'package:store_app/domain/usecase/product_use_case.dart';
 
-import 'package:store_app/repository/product_repository.dart';
-import 'package:http/http.dart' as http;
 import 'package:store_app/util/constant_util.dart';
 
 import '../../bloc/product/product_bloc.dart';
@@ -19,7 +20,10 @@ class DashboardScreen extends StatelessWidget {
       appBar: AppBar(title: Text(ConstantUtil.appName)),
       body: BlocProvider(
         create: (context) => ProductBloc(
-          productRepository: ProductRepository(client: http.Client()),
+          productUseCase: ProductUseCase(
+              productRepository: ProductRepositoryImpl(
+            productDataSource: RepositoryProvider.of<ProductDataSourceImpl>(context),
+          )),
         )..add(ProductFetched()),
         child: BlocConsumer<ProductBloc, ProductState>(
           listener: (context, state) {
