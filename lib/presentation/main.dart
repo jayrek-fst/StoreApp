@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/data/datasource/remote/product_datasource_impl.dart';
 import 'package:http/http.dart' as http;
 
+import '../core/util/constant_util.dart';
 import 'route_generator.dart';
-import 'util/constant_util.dart';
 
 void main() {
   runApp(const StoreApp());

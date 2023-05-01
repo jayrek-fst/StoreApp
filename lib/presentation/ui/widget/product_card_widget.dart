@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/domain/entity/product_entity.dart';
 
-import '../../../domain/model/product_model.dart';
-import '../../util/constant_util.dart';
+import '../../../core/util/constant_util.dart';
 import 'star_rating_widget.dart';
 
 class ProductCardWidget extends StatelessWidget {
-  const ProductCardWidget({Key? key, required this.productModel}) : super(key: key);
+  const ProductCardWidget({Key? key, required this.productEntity}) : super(key: key);
 
-  final ProductModel productModel;
+  final ProductEntity productEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +22,19 @@ class ProductCardWidget extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushNamed(
                 ConstantUtil.routeProductDetails,
-                arguments: productModel,
+                arguments: productEntity,
               );
             },
             child: Column(
               children: [
                 Hero(
-                  tag: productModel.id.toString(),
+                  tag: productEntity.id.toString(),
                   child: ClipRRect(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8),
                     ),
-                    child: Image.network(productModel.image.toString(), fit: BoxFit.cover),
+                    child: Image.network(productEntity.image.toString(), fit: BoxFit.cover),
                   ),
                 ),
                 Padding(
@@ -43,14 +43,14 @@ class ProductCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        productModel.title.toString(),
+                        productEntity.title.toString(),
                         style: TextStyle(fontWeight: FontWeight.w500),
                       ),
                       SizedBox(height: 10),
-                      Text('${ConstantUtil.price} \$${productModel.price}'),
-                      Text('${ConstantUtil.qty}  ${productModel.rating?.count}'),
+                      Text('${ConstantUtil.price} \$${productEntity.price}'),
+                      Text('${ConstantUtil.qty}  ${productEntity.rating?.count}'),
                       StarRatingWidget(
-                        rating: productModel.rating?.rate,
+                        rating: productEntity.rating?.rate,
                         color: Colors.yellow.shade900,
                       ),
                     ],

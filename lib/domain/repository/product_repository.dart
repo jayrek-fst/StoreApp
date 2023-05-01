@@ -1,5 +1,5 @@
-import 'package:store_app/domain/model/product_model.dart';
+import 'package:store_app/domain/entity/product_entity.dart';
 
 abstract class ProductRepository {
-  Future<List<ProductModel>> getProductList();
+  Future<List<ProductEntity>> getProductList();
 }

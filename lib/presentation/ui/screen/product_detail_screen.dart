@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/domain/entity/product_entity.dart';
 
-import '../../../domain/model/product_model.dart';
 import '../widget/star_rating_widget.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  const ProductDetailScreen({Key? key, required this.productModel}) : super(key: key);
+  const ProductDetailScreen({Key? key, required this.productEntity}) : super(key: key);
 
-  final ProductModel productModel;
+  final ProductEntity productEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +24,9 @@ class ProductDetailScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Hero(
-                    tag: productModel.id.toString(),
+                    tag: productEntity.id.toString(),
                     child: Image.network(
-                      productModel.image.toString(),
+                      productEntity.image.toString(),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -36,14 +36,14 @@ class ProductDetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          productModel.title.toString(),
+                          productEntity.title.toString(),
                           style: TextStyle(fontWeight: FontWeight.w500),
                         ),
                         SizedBox(height: 10),
-                        Text('price: \$${productModel.price}'),
-                        Text('qty: ${productModel.rating?.count}'),
+                        Text('price: \$${productEntity.price}'),
+                        Text('qty: ${productEntity.rating?.count}'),
                         StarRatingWidget(
-                          rating: productModel.rating?.rate,
+                          rating: productEntity.rating?.rate,
                           onRatingChanged: (_) {},
                           color: Colors.yellow.shade900,
                         ),

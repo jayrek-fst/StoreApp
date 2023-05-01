@@ -12,7 +12,7 @@ class ProductInitial extends ProductState {}
 class ProductLoadInProgress extends ProductState {}
 
 class ProductLoadSuccess extends ProductState {
-  final List<ProductModel> productList;
+  final List<ProductEntity> productList;
 
   ProductLoadSuccess(this.productList);
 

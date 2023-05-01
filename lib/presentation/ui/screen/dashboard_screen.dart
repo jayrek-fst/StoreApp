@@ -5,8 +5,8 @@ import 'package:store_app/data/datasource/remote/product_datasource_impl.dart';
 import 'package:store_app/data/repository/product_repository_impl.dart';
 import 'package:store_app/domain/usecase/product_use_case.dart';
 
+import '../../../core/util/constant_util.dart';
 import '../../bloc/product/product_bloc.dart';
-import '../../util/constant_util.dart';
 import '../widget/product_card_widget.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -49,7 +49,7 @@ class DashboardScreen extends StatelessWidget {
                     ),
                   ),
                   child: ProductCardWidget(
-                    productModel: productList[index],
+                    productEntity: productList[index],
                   ),
                 ),
               );

@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_app/domain/entity/product_entity.dart';
 import 'package:store_app/domain/usecase/product_use_case.dart';
-
-import '../../../domain/model/product_model.dart';
 
 part 'product_event.dart';
 

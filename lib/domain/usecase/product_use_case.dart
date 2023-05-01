@@ -1,4 +1,4 @@
-import 'package:store_app/domain/model/product_model.dart';
+import 'package:store_app/domain/entity/product_entity.dart';
 import 'package:store_app/domain/repository/product_repository.dart';
 
 class ProductUseCase {
@@ -6,7 +6,7 @@ class ProductUseCase {
 
   ProductUseCase({required this.productRepository});
 
-  Future<List<ProductModel>> getAllProducts() async {
+  Future<List<ProductEntity>> getAllProducts() async {
     try {
       return await productRepository.getProductList();
     } catch (e) {

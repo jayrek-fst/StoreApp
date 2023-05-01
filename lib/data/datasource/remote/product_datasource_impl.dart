@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../../../domain/model/product_model.dart';
-import '../../../presentation/util/constant_util.dart';
+import '../../../core/util/constant_util.dart';
+import '../../model/product_model.dart';
 import 'product_datasource.dart';
 
 class ProductDataSourceImpl implements ProductDataSource {
