@@ -5,7 +5,6 @@ typedef void RatingChangeCallback(double rating);
 class StarRatingWidget extends StatelessWidget {
   final int starCount;
   final dynamic rating;
-
   final RatingChangeCallback? onRatingChanged;
   final Color color;
 
