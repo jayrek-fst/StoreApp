@@ -5,6 +5,7 @@ typedef void RatingChangeCallback(double rating);
 class StarRatingWidget extends StatelessWidget {
   final int starCount;
   final dynamic rating;
+
   final RatingChangeCallback? onRatingChanged;
   final Color color;
 
@@ -18,21 +19,27 @@ class StarRatingWidget extends StatelessWidget {
   Widget buildStar(BuildContext context, int index) {
     Icon icon;
     if (index >= rating) {
-      icon = new Icon(Icons.star_border, color: Colors.grey.shade300);
+      icon = Icon(Icons.star_border, color: Colors.grey.shade300);
     } else if (index > rating - 1 && index < rating) {
-      icon = new Icon(Icons.star_half, color: color);
+      icon = Icon(Icons.star_half, color: color);
     } else {
-      icon = new Icon(Icons.star, color: color);
+      icon = Icon(Icons.star, color: color);
     }
     return icon;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: List.generate(
-        starCount,
-        (index) => buildStar(context, index),
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: MediaQuery(
+        data: MediaQueryData(),
+        child: Row(
+          children: List.generate(
+            starCount,
+            (index) => buildStar(context, index),
+          ),
+        ),
       ),
     );
   }
