@@ -2,19 +2,20 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:store_app/bloc/product/product_bloc.dart';
-import 'package:store_app/model/product_model.dart';
-import 'package:store_app/repository/product_repository.dart';
+import 'package:store_app/domain/entity/product_entity.dart';
+import 'package:store_app/domain/usecase/product_use_case.dart';
+import 'package:store_app/presentation/bloc/product/product_bloc.dart';
 
-class MockProductRepository extends Mock implements ProductRepository {}
+class MockProductUseCase extends Mock implements ProductUseCase {}
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   late ProductBloc productBloc;
-  late MockProductRepository mockProductRepository;
 
-  final product = ProductModel(
+  late MockProductUseCase mockProductUseCase;
+
+  final product = ProductEntity(
     id: 001,
     title: 'testTitle',
     price: 10,
@@ -25,20 +26,20 @@ void main() {
   );
 
   setUp(() {
-    mockProductRepository = MockProductRepository();
-    productBloc = ProductBloc(productRepository: mockProductRepository);
+    mockProductUseCase = MockProductUseCase();
+    productBloc = ProductBloc(productUseCase: mockProductUseCase);
   });
 
   blocTest(
     'emits ProductLoadInProgress state and ProductLoadSuccess state when getProducts returns products',
     build: () => productBloc,
     setUp: () async {
-      when(() => mockProductRepository.getProducts()).thenAnswer(
+      when(() => mockProductUseCase.getAllProducts()).thenAnswer(
         (_) => Future.value([product]),
       );
     },
     verify: (_) {
-      verify(() => mockProductRepository.getProducts()).called(1);
+      verify(() => mockProductUseCase.getAllProducts()).called(1);
     },
     act: (bloc) => bloc..add(ProductFetched()),
     expect: () => [isA<ProductLoadInProgress>(), isA<ProductLoadSuccess>()],
@@ -48,10 +49,10 @@ void main() {
     'emits ProductLoadInProgress state and ProductLoadFailure state when getProducts throws exception',
     build: () => productBloc,
     setUp: () async {
-      when(() => mockProductRepository.getProducts()).thenThrow(Exception);
+      when(() => mockProductUseCase.getAllProducts()).thenThrow(Exception);
     },
     verify: (_) {
-      verify(() => mockProductRepository.getProducts()).called(1);
+      verify(() => mockProductUseCase.getAllProducts()).called(1);
     },
     act: (bloc) => bloc..add(ProductFetched()),
     expect: () => [isA<ProductLoadInProgress>(), isA<ProductLoadFailure>()],

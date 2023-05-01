@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:store_app/ui/widget/star_rating_widget.dart';
+import 'package:store_app/presentation/ui/widget/star_rating_widget.dart';
 
 void main() {
   testWidgets('StarRatingWidget displays a full star icon and a half star icon', (tester) async {

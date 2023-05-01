@@ -2,20 +2,21 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:store_app/model/product_model.dart';
-import 'package:store_app/repository/product_repository.dart';
-import 'package:store_app/util/constant_util.dart';
+import 'package:store_app/core/util/constant_util.dart';
+import 'package:store_app/data/datasource/remote/product_datasource.dart';
+import 'package:store_app/data/datasource/remote/product_datasource_impl.dart';
+import 'package:store_app/domain/entity/product_entity.dart';
 
-import 'product_repository_test.mocks.dart';
+import 'product_datasource_impl_test.mocks.dart';
 
 @GenerateMocks([http.Client])
 void main() {
   late MockClient mockClient;
-  late ProductRepository productRepository;
+  late ProductDataSource productDataSource;
 
   setUp(() {
     mockClient = MockClient();
-    productRepository = ProductRepository(client: mockClient);
+    productDataSource = ProductDataSourceImpl(client: mockClient);
   });
 
   test('returns a list of products when status code is 200', () async {
@@ -33,7 +34,7 @@ void main() {
           200,
         ));
 
-    expect(await productRepository.getProducts(), isA<List<ProductModel>>());
+    expect(await productDataSource.getProductList(), isA<List<ProductEntity>>());
   });
 
   test('throws exception', () async {
@@ -41,6 +42,6 @@ void main() {
       mockClient.get(Uri.parse('${ConstantUtil.baseUrl}products')),
     ).thenThrow(Exception());
 
-    expect(productRepository.getProducts(), throwsException);
+    expect(productDataSource.getProductList(), throwsException);
   });
 }

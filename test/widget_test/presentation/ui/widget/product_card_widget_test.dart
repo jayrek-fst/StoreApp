@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:store_app/domain/model/product_model.dart';
-import 'package:store_app/domain/model/rating_model.dart';
-import 'package:store_app/ui/widget/product_card_widget.dart';
-import 'package:store_app/util/constant_util.dart';
+import 'package:store_app/core/util/constant_util.dart';
+import 'package:store_app/data/model/product_model.dart';
+import 'package:store_app/data/model/rating_model.dart';
+import 'package:store_app/presentation/ui/widget/product_card_widget.dart';
 
 void main() {
   final product = ProductModel(
@@ -19,7 +19,7 @@ void main() {
 
   testWidgets('Product card widget has data of the product object', (tester) async {
     mockNetworkImagesFor(() async {
-      await tester.pumpWidget(ProductCardWidget(productModel: product));
+      await tester.pumpWidget(ProductCardWidget(productEntity: product));
 
       final productTitleFinder = find.text(product.title.toString());
       final productPriceFinder = find.text('${ConstantUtil.price} \$${product.price.toString()}');
