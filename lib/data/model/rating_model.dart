@@ -6,9 +6,11 @@ class RatingModel extends RatingEntity {
     required dynamic count,
   }) : super(rate: rate, count: count);
 
-  RatingModel.fromJson(dynamic json) {
-    rate = json['rate'];
-    count = json['count'];
+  factory RatingModel.fromJson(dynamic json) {
+    return RatingModel(
+      rate: json['rate'],
+      count: json['count'],
+    );
   }
 
   Map<String, dynamic> toJson() {

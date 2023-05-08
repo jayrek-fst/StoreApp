@@ -1,13 +1,15 @@
+import 'package:equatable/equatable.dart';
+
 import '../../data/model/rating_model.dart';
 
-class ProductEntity {
-  int? id;
-  String? title;
-  dynamic price;
-  String? description;
-  String? category;
-  String? image;
-  RatingModel? rating;
+class ProductEntity extends Equatable {
+  final int? id;
+  final String? title;
+  final dynamic price;
+  final String? description;
+  final String? category;
+  final String? image;
+  final RatingModel? rating;
 
   ProductEntity({
     this.id,
@@ -19,29 +21,16 @@ class ProductEntity {
     this.rating,
   });
 
-  ProductEntity.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    price = json['price'];
-    description = json['description'];
-    category = json['category'];
-    image = json['image'];
-    rating = json['rating'] != null ? RatingModel.fromJson(json['rating']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['title'] = title;
-    data['price'] = price;
-    data['description'] = description;
-    data['category'] = category;
-    data['image'] = image;
-    if (rating != null) {
-      data['rating'] = rating?.toJson();
-    }
-    return data;
-  }
+  @override
+  List<Object?> get props => [
+        id,
+        title,
+        price,
+        description,
+        category,
+        image,
+        rating,
+      ];
 
   @override
   String toString() {
