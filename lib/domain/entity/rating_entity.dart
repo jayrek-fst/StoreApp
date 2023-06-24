@@ -4,7 +4,7 @@ class RatingEntity extends Equatable {
   final dynamic rate;
   final dynamic count;
 
-  RatingEntity({
+  const RatingEntity({
     this.rate,
     this.count,
   });

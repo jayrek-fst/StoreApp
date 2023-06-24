@@ -14,7 +14,7 @@ class ProductLoadInProgress extends ProductState {}
 class ProductLoadSuccess extends ProductState {
   final List<ProductEntity> productList;
 
-  ProductLoadSuccess(this.productList);
+  const ProductLoadSuccess(this.productList);
 
   @override
   List<Object> get props => [productList];
@@ -23,7 +23,7 @@ class ProductLoadSuccess extends ProductState {
 class ProductLoadFailure extends ProductState {
   final String message;
 
-  ProductLoadFailure(this.message);
+  const ProductLoadFailure(this.message);
 
   @override
   List<Object> get props => [message];

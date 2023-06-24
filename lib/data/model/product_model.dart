@@ -1,25 +1,16 @@
-import 'package:store_app/domain/entity/product_entity.dart';
-
+import '../../domain/entity/product_entity.dart';
 import 'rating_model.dart';
 
 class ProductModel extends ProductEntity {
-  ProductModel({
-    int? id,
-    String? title,
-    dynamic price,
-    String? description,
-    String? category,
-    String? image,
-    RatingModel? rating,
-  }) : super(
-          id: id,
-          title: title,
-          price: price,
-          description: description,
-          category: category,
-          image: image,
-          rating: rating,
-        );
+  const ProductModel({
+    super.id,
+    super.title,
+    super.price,
+    super.description,
+    super.category,
+    super.image,
+    super.rating,
+  });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(

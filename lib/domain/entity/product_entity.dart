@@ -11,7 +11,7 @@ class ProductEntity extends Equatable {
   final String? image;
   final RatingModel? rating;
 
-  ProductEntity({
+  const ProductEntity({
     this.id,
     this.title,
     this.price,

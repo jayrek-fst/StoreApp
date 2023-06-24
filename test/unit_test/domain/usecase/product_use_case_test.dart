@@ -15,7 +15,7 @@ void main() {
     productUseCase = ProductUseCase(productRepository: mockProductRepository);
   });
 
-  final product = ProductEntity(
+  const product = ProductEntity(
     id: 001,
     title: 'testTitle',
     price: 10,

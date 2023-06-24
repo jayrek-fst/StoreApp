@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-typedef void RatingChangeCallback(double rating);
+typedef RatingChangeCallback = void Function(double rating);
 
 class StarRatingWidget extends StatelessWidget {
   final int starCount;
@@ -8,7 +8,8 @@ class StarRatingWidget extends StatelessWidget {
   final RatingChangeCallback? onRatingChanged;
   final Color color;
 
-  StarRatingWidget({
+  const StarRatingWidget({
+    super.key,
     this.starCount = 5,
     required this.rating,
     this.onRatingChanged,
@@ -32,7 +33,7 @@ class StarRatingWidget extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: MediaQuery(
-        data: MediaQueryData(),
+        data: const MediaQueryData(),
         child: Row(
           children: List.generate(
             starCount,

@@ -1,5 +1,5 @@
-import 'package:store_app/domain/entity/product_entity.dart';
-import 'package:store_app/domain/repository/product_repository.dart';
+import '../entity/product_entity.dart';
+import '../repository/product_repository.dart';
 
 class ProductUseCase {
   final ProductRepository productRepository;

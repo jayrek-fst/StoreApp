@@ -1,10 +1,10 @@
-import 'package:store_app/domain/entity/rating_entity.dart';
+import '../../domain/entity/rating_entity.dart';
 
 class RatingModel extends RatingEntity {
-  RatingModel({
-    required dynamic rate,
-    required dynamic count,
-  }) : super(rate: rate, count: count);
+  const RatingModel({
+    required super.rate,
+    required super.count,
+  });
 
   factory RatingModel.fromJson(dynamic json) {
     return RatingModel(

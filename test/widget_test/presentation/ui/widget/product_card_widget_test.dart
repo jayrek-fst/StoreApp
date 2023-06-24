@@ -7,7 +7,7 @@ import 'package:store_app/data/model/rating_model.dart';
 import 'package:store_app/presentation/ui/widget/product_card_widget.dart';
 
 void main() {
-  final product = ProductModel(
+  const product = ProductModel(
     id: 001,
     title: 'testTitle',
     price: 10,
@@ -20,7 +20,7 @@ void main() {
   testWidgets('Product card widget has data of the product object',
       (tester) async {
     mockNetworkImagesFor(() async {
-      await tester.pumpWidget(ProductCardWidget(productEntity: product));
+      await tester.pumpWidget(const ProductCardWidget(productEntity: product));
 
       final productTitleFinder = find.text(product.title.toString());
       final productPriceFinder =

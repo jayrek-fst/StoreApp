@@ -1,7 +1,6 @@
-import 'package:store_app/data/datasource/remote/product_datasource.dart';
-import 'package:store_app/domain/entity/product_entity.dart';
-
+import '../../domain/entity/product_entity.dart';
 import '../../domain/repository/product_repository.dart';
+import '../datasource/remote/product_datasource.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   final ProductDataSource productDataSource;

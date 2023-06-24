@@ -15,7 +15,7 @@ void main() {
 
   late MockProductUseCase mockProductUseCase;
 
-  final product = ProductEntity(
+  const product = ProductEntity(
     id: 001,
     title: 'testTitle',
     price: 10,
@@ -39,7 +39,7 @@ void main() {
       );
     },
     verify: (_) {
-      verify(() => mockProductUseCase.getAllProducts()).called(1);
+      verify(() async => mockProductUseCase.getAllProducts()).called(1);
     },
     act: (bloc) => bloc..add(ProductFetched()),
     expect: () => [isA<ProductLoadInProgress>(), isA<ProductLoadSuccess>()],
@@ -52,7 +52,7 @@ void main() {
       when(() => mockProductUseCase.getAllProducts()).thenThrow(Exception);
     },
     verify: (_) {
-      verify(() => mockProductUseCase.getAllProducts()).called(1);
+      verify(() async => mockProductUseCase.getAllProducts()).called(1);
     },
     act: (bloc) => bloc..add(ProductFetched()),
     expect: () => [isA<ProductLoadInProgress>(), isA<ProductLoadFailure>()],

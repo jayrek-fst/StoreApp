@@ -21,7 +21,7 @@ void main() {
         ProductRepositoryImpl(productDataSource: mockProductDataSource);
   });
 
-  final product = ProductModel(
+  const product = ProductModel(
     id: 001,
     title: 'testTitle',
     price: 10,
