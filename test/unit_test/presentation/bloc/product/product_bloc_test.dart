@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,7 +17,7 @@ void main() {
 
   late MockProductUseCase mockProductUseCase;
 
-  const product = ProductEntity(
+  const products = ProductEntity(
     id: 001,
     title: 'testTitle',
     price: 10,
@@ -33,13 +35,13 @@ void main() {
   blocTest(
     'emits ProductLoadInProgress state and ProductLoadSuccess state when getProducts returns products',
     build: () => productBloc,
-    setUp: () async {
-      when(() => mockProductUseCase.getAllProducts()).thenAnswer(
-        (_) => Future.value([product]),
+    setUp: () {
+      when(() => unawaited(mockProductUseCase.getAllProducts())).thenAnswer(
+        (_) => Future.value([products]),
       );
     },
     verify: (_) {
-      verify(() async => mockProductUseCase.getAllProducts()).called(1);
+      verify(() => unawaited(mockProductUseCase.getAllProducts())).called(1);
     },
     act: (bloc) => bloc..add(ProductFetched()),
     expect: () => [isA<ProductLoadInProgress>(), isA<ProductLoadSuccess>()],
@@ -48,11 +50,11 @@ void main() {
   blocTest(
     'emits ProductLoadInProgress state and ProductLoadFailure state when getProducts throws exception',
     build: () => productBloc,
-    setUp: () async {
+    setUp: () {
       when(() => mockProductUseCase.getAllProducts()).thenThrow(Exception);
     },
     verify: (_) {
-      verify(() async => mockProductUseCase.getAllProducts()).called(1);
+      verify(() => mockProductUseCase.getAllProducts()).called(1);
     },
     act: (bloc) => bloc..add(ProductFetched()),
     expect: () => [isA<ProductLoadInProgress>(), isA<ProductLoadFailure>()],
