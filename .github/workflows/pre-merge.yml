@@ -28,11 +28,14 @@ jobs:
           path: /Users/runner/hostedtoolcache/flutter
           key: ${{ runner.os }}-flutter
 
+      - name: Run Flutter Pub Get
+        run: flutter pub get
+
       - name: Flutter Format
         run: dart format --set-exit-if-changed .
 
       - name: Flutter Analyze
-        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+        run: dart analyze --fatal-infos
 
       - name: Run Unit Test
         run: flutter test
