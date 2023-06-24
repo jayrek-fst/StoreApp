@@ -2,9 +2,7 @@ name: Pre Merge
 
 on:
   pull_request:
-    branches:
-      - main
-      - develop
+    branches: [ main, develop ]
 
 jobs:
   pre-merge:
