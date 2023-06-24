@@ -51,7 +51,8 @@ void main() {
     'emits ProductLoadInProgress state and ProductLoadFailure state when getProducts throws exception',
     build: () => productBloc,
     setUp: () {
-      when(() => unawaited(mockProductUseCase.getAllProducts())).thenThrow(Exception);
+      when(() => unawaited(mockProductUseCase.getAllProducts()))
+          .thenThrow(Exception);
     },
     verify: (_) {
       verify(() => unawaited(mockProductUseCase.getAllProducts())).called(1);
