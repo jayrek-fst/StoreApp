@@ -14,7 +14,8 @@ class ProductDataSourceImpl implements ProductDataSource {
   @override
   Future<List<ProductModel>> getProductList() async {
     try {
-      var response = await client.get(Uri.parse('${ConstantUtil.baseUrl}products'));
+      var response =
+          await client.get(Uri.parse('${ConstantUtil.baseUrl}products'));
       final responseBody = jsonDecode(response.body);
       List<ProductModel> products = (responseBody as List)
           .map(

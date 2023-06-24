@@ -13,11 +13,13 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const DashboardScreen());
       case ConstantUtil.routeProductDetails:
         return MaterialPageRoute(
-          builder: (_) => ProductDetailScreen(productEntity: args as ProductEntity),
+          builder: (_) =>
+              ProductDetailScreen(productEntity: args as ProductEntity),
         );
       default:
         return MaterialPageRoute(
-          builder: (_) => const Scaffold(body: SafeArea(child: Text('Route Error'))),
+          builder: (_) =>
+              const Scaffold(body: SafeArea(child: Text('Route Error'))),
         );
     }
   }

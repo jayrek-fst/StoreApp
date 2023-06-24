@@ -34,7 +34,8 @@ void main() {
           200,
         ));
 
-    expect(await productDataSource.getProductList(), isA<List<ProductEntity>>());
+    expect(
+        await productDataSource.getProductList(), isA<List<ProductEntity>>());
   });
 
   test('throws exception', () async {

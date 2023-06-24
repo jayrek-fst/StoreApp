@@ -5,7 +5,8 @@ import '../../../core/util/constant_util.dart';
 import 'star_rating_widget.dart';
 
 class ProductCardWidget extends StatelessWidget {
-  const ProductCardWidget({Key? key, required this.productEntity}) : super(key: key);
+  const ProductCardWidget({Key? key, required this.productEntity})
+      : super(key: key);
 
   final ProductEntity productEntity;
 
@@ -34,7 +35,8 @@ class ProductCardWidget extends StatelessWidget {
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8),
                     ),
-                    child: Image.network(productEntity.image.toString(), fit: BoxFit.cover),
+                    child: Image.network(productEntity.image.toString(),
+                        fit: BoxFit.cover),
                   ),
                 ),
                 Padding(
@@ -48,7 +50,8 @@ class ProductCardWidget extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       Text('${ConstantUtil.price} \$${productEntity.price}'),
-                      Text('${ConstantUtil.qty}  ${productEntity.rating?.count}'),
+                      Text(
+                          '${ConstantUtil.qty}  ${productEntity.rating?.count}'),
                       StarRatingWidget(
                         rating: productEntity.rating?.rate,
                         color: Colors.yellow.shade900,

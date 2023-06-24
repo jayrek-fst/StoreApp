@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:store_app/presentation/ui/widget/star_rating_widget.dart';
 
 void main() {
-  testWidgets('StarRatingWidget displays a full star icon and a half star icon', (tester) async {
+  testWidgets('StarRatingWidget displays a full star icon and a half star icon',
+      (tester) async {
     await tester.pumpWidget(StarRatingWidget(
       rating: 1.5,
       color: Colors.yellow,
@@ -13,7 +14,9 @@ void main() {
     expect(find.byIcon(Icons.star), findsOneWidget);
   });
 
-  testWidgets('StarRatingWidget displays 4 full star icon and a border star icon', (tester) async {
+  testWidgets(
+      'StarRatingWidget displays 4 full star icon and a border star icon',
+      (tester) async {
     await tester.pumpWidget(StarRatingWidget(
       rating: 4,
       color: Colors.yellow,

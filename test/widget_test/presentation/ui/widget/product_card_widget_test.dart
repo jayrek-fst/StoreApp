@@ -17,13 +17,16 @@ void main() {
     rating: RatingModel(rate: 5, count: 100),
   );
 
-  testWidgets('Product card widget has data of the product object', (tester) async {
+  testWidgets('Product card widget has data of the product object',
+      (tester) async {
     mockNetworkImagesFor(() async {
       await tester.pumpWidget(ProductCardWidget(productEntity: product));
 
       final productTitleFinder = find.text(product.title.toString());
-      final productPriceFinder = find.text('${ConstantUtil.price} \$${product.price.toString()}');
-      final productQtyFinder = find.text('${ConstantUtil.qty}  ${product.rating?.count}');
+      final productPriceFinder =
+          find.text('${ConstantUtil.price} \$${product.price.toString()}');
+      final productQtyFinder =
+          find.text('${ConstantUtil.qty}  ${product.rating?.count}');
       final productRatingFinder = find.byIcon(Icons.star);
 
       expect(productTitleFinder, findsOneWidget);

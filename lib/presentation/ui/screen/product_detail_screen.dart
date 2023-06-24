@@ -4,7 +4,8 @@ import 'package:store_app/domain/entity/product_entity.dart';
 import '../widget/star_rating_widget.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  const ProductDetailScreen({Key? key, required this.productEntity}) : super(key: key);
+  const ProductDetailScreen({Key? key, required this.productEntity})
+      : super(key: key);
 
   final ProductEntity productEntity;
 
@@ -58,7 +59,8 @@ class ProductDetailScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {},
-                child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Icon(Icons.add_shopping_cart_outlined),
                   SizedBox(width: 10),
                   Text('ADD TO CART'),
@@ -66,7 +68,8 @@ class ProductDetailScreen extends StatelessWidget {
                 style: ButtonStyle(
                   padding: MaterialStateProperty.all(EdgeInsets.all(15)),
                   elevation: MaterialStateProperty.all<double>(0),
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade700),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.green.shade700),
                 ),
               ),
             )

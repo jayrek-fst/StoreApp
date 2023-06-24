@@ -17,7 +17,8 @@ void main() {
 
   setUp(() {
     mockProductDataSource = MockProductDataSource();
-    productRepository = ProductRepositoryImpl(productDataSource: mockProductDataSource);
+    productRepository =
+        ProductRepositoryImpl(productDataSource: mockProductDataSource);
   });
 
   final product = ProductModel(

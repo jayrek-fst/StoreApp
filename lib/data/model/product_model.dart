@@ -29,7 +29,8 @@ class ProductModel extends ProductEntity {
       description: json['description'],
       category: json['category'],
       image: json['image'],
-      rating: json['rating'] != null ? RatingModel.fromJson(json['rating']) : null,
+      rating:
+          json['rating'] != null ? RatingModel.fromJson(json['rating']) : null,
     );
   }
 

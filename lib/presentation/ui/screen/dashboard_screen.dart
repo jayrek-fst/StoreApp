@@ -21,7 +21,8 @@ class DashboardScreen extends StatelessWidget {
         create: (context) => ProductBloc(
           productUseCase: ProductUseCase(
               productRepository: ProductRepositoryImpl(
-            productDataSource: RepositoryProvider.of<ProductDataSourceImpl>(context),
+            productDataSource:
+                RepositoryProvider.of<ProductDataSourceImpl>(context),
           )),
         )..add(ProductFetched()),
         child: BlocConsumer<ProductBloc, ProductState>(
